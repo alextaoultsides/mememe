@@ -8,7 +8,7 @@
 
 import UIKit
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate {
+class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
 
     @IBOutlet weak var memeImage: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -21,6 +21,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
         topTextfield.text = "TOP"
         bottomTextfield.text = "BOTTOM"
+        topTextfield.textAlignment = NSTextAlignment.center
+        bottomTextfield.textAlignment = NSTextAlignment.center
+        
+        
         
     }
     
