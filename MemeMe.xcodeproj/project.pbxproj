@@ -7,6 +7,8 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		D41180BB1FE46C3700F7324F /* impact in Resources */ = {isa = PBXBuildFile; fileRef = D41180BA1FE46C3700F7324F /* impact */; };
+		D41180BD1FE46CDA00F7324F /* impact.ttf in Resources */ = {isa = PBXBuildFile; fileRef = D41180BC1FE46CDA00F7324F /* impact.ttf */; };
 		D4AFB80C1FE309D80032E1F2 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AFB80B1FE309D80032E1F2 /* AppDelegate.swift */; };
 		D4AFB80E1FE309D80032E1F2 /* ViewController.swift in Sources */ = {isa = PBXBuildFile; fileRef = D4AFB80D1FE309D80032E1F2 /* ViewController.swift */; };
 		D4AFB8111FE309D80032E1F2 /* Main.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = D4AFB80F1FE309D80032E1F2 /* Main.storyboard */; };
@@ -15,6 +17,8 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
+		D41180BA1FE46C3700F7324F /* impact */ = {isa = PBXFileReference; lastKnownFileType = folder; path = impact; sourceTree = "<group>"; };
+		D41180BC1FE46CDA00F7324F /* impact.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = impact.ttf; sourceTree = "<group>"; };
 		D4AFB8081FE309D80032E1F2 /* MemeMe.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = MemeMe.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		D4AFB80B1FE309D80032E1F2 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		D4AFB80D1FE309D80032E1F2 /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -38,6 +42,7 @@
 		D4AFB7FF1FE309D70032E1F2 = {
 			isa = PBXGroup;
 			children = (
+				D41180BC1FE46CDA00F7324F /* impact.ttf */,
 				D4AFB80A1FE309D80032E1F2 /* MemeMe */,
 				D4AFB8091FE309D80032E1F2 /* Products */,
 			);
@@ -54,6 +59,7 @@
 		D4AFB80A1FE309D80032E1F2 /* MemeMe */ = {
 			isa = PBXGroup;
 			children = (
+				D41180BA1FE46C3700F7324F /* impact */,
 				D4AFB80B1FE309D80032E1F2 /* AppDelegate.swift */,
 				D4AFB80D1FE309D80032E1F2 /* ViewController.swift */,
 				D4AFB80F1FE309D80032E1F2 /* Main.storyboard */,
@@ -123,9 +129,11 @@
 			isa = PBXResourcesBuildPhase;
 			buildActionMask = 2147483647;
 			files = (
+				D41180BB1FE46C3700F7324F /* impact in Resources */,
 				D4AFB8161FE309D80032E1F2 /* LaunchScreen.storyboard in Resources */,
 				D4AFB8131FE309D80032E1F2 /* Assets.xcassets in Resources */,
 				D4AFB8111FE309D80032E1F2 /* Main.storyboard in Resources */,
+				D41180BD1FE46CDA00F7324F /* impact.ttf in Resources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
 		};

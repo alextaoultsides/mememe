@@ -15,7 +15,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var topTextfield: UITextField!
     @IBOutlet weak var bottomTextfield: UITextField!
     
-    
+    // MARK: Load textfields and set defaults
     override func viewDidLoad() {
         super.viewDidLoad()
     
