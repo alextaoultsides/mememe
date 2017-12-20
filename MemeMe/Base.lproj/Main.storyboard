@@ -23,6 +23,16 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="saP-E2-uJV">
+                                <rect key="frame" x="67" y="155" width="240" height="255"/>
+                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOe-iU-U8X">
+                                <rect key="frame" x="0.0" y="505" width="375" height="99"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Q5-Zh-Y19">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
@@ -41,24 +51,16 @@
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="XX2-Da-BFq"/>
                                 </items>
                             </toolbar>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="saP-E2-uJV">
-                                <rect key="frame" x="67" y="155" width="240" height="255"/>
-                            </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="TOP" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="nFR-L5-rJp">
-                                <rect key="frame" x="0.0" y="49" width="375" height="21"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
-                            </textField>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" placeholder="BOTTOM" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOe-iU-U8X">
-                                <rect key="frame" x="0.0" y="509" width="375" height="99"/>
+                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="nFR-L5-rJp">
+                                <rect key="frame" x="66" y="168" width="241" height="65"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
-                                <textInputTraits key="textInputTraits"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLg-fY-pB9">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="44"/>
+                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PLg-fY-pB9">
+                                <rect key="frame" x="-1" y="0.0" width="376" height="44"/>
+                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <items>
                                     <navigationItem title="Title" id="Ubj-ng-Nf8"/>
                                 </items>
@@ -69,15 +71,11 @@
                             <constraint firstItem="2Q5-Zh-Y19" firstAttribute="top" secondItem="saP-E2-uJV" secondAttribute="bottom" constant="213" id="0GC-h1-SJL"/>
                             <constraint firstItem="2Q5-Zh-Y19" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="0Om-aP-C94"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="saP-E2-uJV" secondAttribute="trailing" constant="68" id="6Ap-sN-yWU"/>
-                            <constraint firstItem="PLg-fY-pB9" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="A7v-yO-SSW"/>
                             <constraint firstItem="saP-E2-uJV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="135" id="M0f-oS-1Qg"/>
-                            <constraint firstItem="nFR-L5-rJp" firstAttribute="top" secondItem="PLg-fY-pB9" secondAttribute="bottom" constant="5" id="TNr-Nl-aQz"/>
-                            <constraint firstItem="PLg-fY-pB9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="WV2-69-2FQ"/>
                             <constraint firstItem="2Q5-Zh-Y19" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eCk-nn-Zou"/>
                             <constraint firstItem="saP-E2-uJV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="eIO-aR-P40"/>
                             <constraint firstItem="2Q5-Zh-Y19" firstAttribute="top" secondItem="saP-E2-uJV" secondAttribute="bottom" constant="213" id="h3i-g4-0Dh"/>
                             <constraint firstItem="2Q5-Zh-Y19" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="q07-a6-QcJ"/>
-                            <constraint firstItem="PLg-fY-pB9" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="r68-fD-HXC"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
