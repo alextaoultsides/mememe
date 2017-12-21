@@ -62,7 +62,14 @@
                                 <rect key="frame" x="-1" y="0.0" width="376" height="44"/>
                                 <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
                                 <items>
-                                    <navigationItem title="Title" id="Ubj-ng-Nf8"/>
+                                    <navigationItem id="Ubj-ng-Nf8">
+                                        <barButtonItem key="leftBarButtonItem" systemItem="action" id="7eD-ct-XnD">
+                                            <connections>
+                                                <action selector="shareButton:" destination="BYZ-38-t0r" id="xZG-T6-3U4"/>
+                                            </connections>
+                                        </barButtonItem>
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="FLb-yo-qka"/>
+                                    </navigationItem>
                                 </items>
                             </navigationBar>
                         </subviews>
@@ -82,7 +89,7 @@
                     <connections>
                         <outlet property="bottomTextfield" destination="kOe-iU-U8X" id="r61-ep-8Hf"/>
                         <outlet property="cameraButton" destination="Cns-gV-GCb" id="JyI-6F-g0z"/>
-                        <outlet property="memeImage" destination="saP-E2-uJV" id="CZp-6B-YMs"/>
+                        <outlet property="originalMemeImage" destination="saP-E2-uJV" id="ROQ-E1-P99"/>
                         <outlet property="topTextfield" destination="nFR-L5-rJp" id="kKO-vp-7qL"/>
                     </connections>
                 </viewController>

@@ -7,21 +7,22 @@
 //
 
 import UIKit
+import Foundation
 
 class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     let memeTextDelegate = MemeTextfieldDelegate()
 
-    @IBOutlet weak var memeImage: UIImageView!
+    @IBOutlet weak var originalMemeImage: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextfield: UITextField!
     @IBOutlet weak var bottomTextfield: UITextField!
     
     struct Meme {
-        var topText : String
-        var bottomText: String
-        var originalImage: UIImage
-        var memedImage: UIImage
+        var topText : String!
+        var bottomText: String!
+        var originalImage: UIImage!
+        var memedImage: UIImage!
         
     }
     
@@ -76,7 +77,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
     
         if let image = info[UIImagePickerControllerOriginalImage] as? UIImage {
-            memeImage.image = image
+            originalMemeImage.image = image
         }
         dismiss(animated: true, completion: nil)
     }
@@ -88,7 +89,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func save() {
         // Create the meme
-        let meme = Meme(topText: topTextField.text!, bottomText: bottomTextField.text!, originalImage: imageView.image!, memedImage: memedImage)
+        let meme = Meme(topText: topTextfield.text!, bottomText: bottomTextfield.text!, originalImage: originalMemeImage.image!, memedImage: generateMemedImage()  )
     }
     
     func generateMemedImage() -> UIImage {
@@ -138,6 +139,13 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         let keyboardSize = userInfo![UIKeyboardFrameEndUserInfoKey] as! NSValue // of CGRect
         return keyboardSize.cgRectValue.height
     }
+    
+    @IBAction func shareButton(_ sender: Any) {
+        
+        let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        self.present(controller, animated: true, completion: nil)
+    }
+    
     
 }
 
