@@ -17,12 +17,14 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextfield: UITextField!
     @IBOutlet weak var bottomTextfield: UITextField!
+    @IBOutlet weak var navBar: UINavigationBar!
+    @IBOutlet weak var toolBar: UIToolbar!
     
     struct Meme {
-        var topText : String!
-        var bottomText: String!
-        var originalImage: UIImage!
-        var memedImage: UIImage!
+        var topText : String?
+        var bottomText: String?
+        var originalImage: UIImage?
+        var memedImage: UIImage?
         
     }
     
@@ -38,7 +40,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
             NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
             NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
             NSAttributedStringKey.font.rawValue: UIFont(name: "Impact", size: 40)!,
-            NSAttributedStringKey.strokeWidth.rawValue: -4.0]
+            NSAttributedStringKey.strokeWidth.rawValue: -4.0,]
         
         
         topTextfield.defaultTextAttributes = memeTextAttributes
@@ -48,18 +50,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         bottomTextfield.text = "BOTTOM"
         topTextfield.textAlignment = NSTextAlignment.center
         bottomTextfield.textAlignment = NSTextAlignment.center
-        
-        
-        
-        
     }
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
         subscribeToKeyboardNotifications()
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)//Checks if camera is available and enables camera button
     }
 
+    // MARK: Toolbar buttons
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
         let imagePicker = UIImagePickerController()
         imagePicker.delegate = self
@@ -72,6 +71,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         imagePicker.sourceType = .photoLibrary
         present(imagePicker, animated: true, completion: nil)
     }
+    
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -89,20 +89,24 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     func save() {
         // Create the meme
-        let meme = Meme(topText: topTextfield.text!, bottomText: bottomTextfield.text!, originalImage: originalMemeImage.image!, memedImage: generateMemedImage()  )
+        _ = Meme(topText: topTextfield.text!, bottomText: bottomTextfield.text!, originalImage: originalMemeImage.image!, memedImage: generateMemedImage()  )
     }
     
     func generateMemedImage() -> UIImage {
         
-        // TODO: Hide toolbar and navbar
-        
+        //Hides bars for screenshot
+        toolBar.isHidden = true
+        navBar.isHidden = true
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
         let memedImage:UIImage = UIGraphicsGetImageFromCurrentImageContext()!
         UIGraphicsEndImageContext()
         
-        // TODO: Show toolbar and navbar
+        //bars become visible after screenshot is taken
+        toolBar.isHidden = false
+        navBar.isHidden = false
+        
         
         return memedImage
     }
@@ -112,6 +116,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         super.viewWillDisappear(animated)
         unsubscribeFromKeyboardNotifications()
     }
+    
+    // MARK:  Notifications
     func subscribeToKeyboardNotifications() {
         
         NotificationCenter.default.addObserver(self, selector: #selector(keyboardWillShow(_:)), name: .UIKeyboardWillShow, object: nil)
@@ -140,11 +146,35 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         return keyboardSize.cgRectValue.height
     }
     
+    
+    // MARK: Action Button for Activity View Controller
     @IBAction func shareButton(_ sender: Any) {
         
-        let controller = UIActivityViewController(activityItems: [image], applicationActivities: nil)
+        let controller = UIActivityViewController(activityItems: [generateMemedImage()], applicationActivities: nil)
         self.present(controller, animated: true, completion: nil)
+        
+        controller.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
+            if !completed {
+                print("cancelled ActivityView")
+                return
+            }
+            if self.originalMemeImage.image != nil{
+                self.save()
+                print("saved")
+                return
+            }
+        }
     }
+    
+    
+    // MARK: Cancel Button resets Meme
+    @IBAction func cancelButton(_ sender: Any) {
+        self.topTextfield.text = "TOP"
+        self.bottomTextfield.text = "BOTTOM"
+        originalMemeImage.image = nil
+    }
+    
+    
     
     
 }

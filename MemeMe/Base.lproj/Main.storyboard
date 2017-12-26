@@ -26,70 +26,90 @@
                             <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="saP-E2-uJV">
                                 <rect key="frame" x="67" y="155" width="240" height="255"/>
                             </imageView>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOe-iU-U8X">
-                                <rect key="frame" x="0.0" y="505" width="375" height="99"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Q5-Zh-Y19">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="Xr4-cs-ZFn"/>
                                     <barButtonItem systemItem="camera" id="Cns-gV-GCb">
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                         <connections>
                                             <action selector="pickAnImageFromCamera:" destination="BYZ-38-t0r" id="IOU-Kd-GFd"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="N8E-cF-wOq"/>
                                     <barButtonItem title="Album" id="0wA-fn-nV0">
+                                        <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                         <connections>
                                             <action selector="pickAnImageFromAlbum:" destination="BYZ-38-t0r" id="Oxd-0Z-8f4"/>
                                         </connections>
                                     </barButtonItem>
                                     <barButtonItem style="plain" systemItem="flexibleSpace" id="XX2-Da-BFq"/>
                                 </items>
+                                <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" fixedFrame="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="nFR-L5-rJp">
-                                <rect key="frame" x="66" y="168" width="241" height="65"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="nFR-L5-rJp">
+                                <rect key="frame" x="16" y="168" width="343" height="21"/>
                                 <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                                 <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
                                 <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
                             </textField>
-                            <navigationBar contentMode="scaleToFill" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="PLg-fY-pB9">
+                            <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLg-fY-pB9">
                                 <rect key="frame" x="-1" y="0.0" width="376" height="44"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxY="YES"/>
+                                <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                 <items>
                                     <navigationItem id="Ubj-ng-Nf8">
                                         <barButtonItem key="leftBarButtonItem" systemItem="action" id="7eD-ct-XnD">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
                                             <connections>
                                                 <action selector="shareButton:" destination="BYZ-38-t0r" id="xZG-T6-3U4"/>
                                             </connections>
                                         </barButtonItem>
-                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="FLb-yo-qka"/>
+                                        <barButtonItem key="rightBarButtonItem" title="Cancel" id="FLb-yo-qka">
+                                            <color key="tintColor" red="1" green="1" blue="1" alpha="1" colorSpace="calibratedRGB"/>
+                                            <connections>
+                                                <action selector="cancelButton:" destination="BYZ-38-t0r" id="EgL-U4-7UC"/>
+                                            </connections>
+                                        </barButtonItem>
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOe-iU-U8X">
+                                <rect key="frame" x="16" y="403" width="343" height="99"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                         </subviews>
-                        <color key="backgroundColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                        <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
                             <constraint firstItem="2Q5-Zh-Y19" firstAttribute="top" secondItem="saP-E2-uJV" secondAttribute="bottom" constant="213" id="0GC-h1-SJL"/>
                             <constraint firstItem="2Q5-Zh-Y19" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="0Om-aP-C94"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="PLg-fY-pB9" secondAttribute="leading" constant="1" id="2um-p2-r02"/>
+                            <constraint firstItem="nFR-L5-rJp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="148" id="5lM-2t-d4Q"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="saP-E2-uJV" secondAttribute="trailing" constant="68" id="6Ap-sN-yWU"/>
-                            <constraint firstItem="saP-E2-uJV" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="135" id="M0f-oS-1Qg"/>
+                            <constraint firstItem="saP-E2-uJV" firstAttribute="top" secondItem="PLg-fY-pB9" secondAttribute="bottom" constant="111" id="CM4-Ct-jLf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kOe-iU-U8X" secondAttribute="bottom" constant="208" id="IL0-x8-gKI"/>
+                            <constraint firstItem="PLg-fY-pB9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-1" id="JGG-JA-Kaf"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nFR-L5-rJp" secondAttribute="trailing" constant="16" id="LCj-Mc-R6h"/>
+                            <constraint firstItem="PLg-fY-pB9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="MWL-nz-B1F"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kOe-iU-U8X" secondAttribute="trailing" constant="16" id="avL-Pz-OqP"/>
                             <constraint firstItem="2Q5-Zh-Y19" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eCk-nn-Zou"/>
                             <constraint firstItem="saP-E2-uJV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="eIO-aR-P40"/>
                             <constraint firstItem="2Q5-Zh-Y19" firstAttribute="top" secondItem="saP-E2-uJV" secondAttribute="bottom" constant="213" id="h3i-g4-0Dh"/>
+                            <constraint firstItem="kOe-iU-U8X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="hoV-LM-tWT"/>
                             <constraint firstItem="2Q5-Zh-Y19" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="q07-a6-QcJ"/>
+                            <constraint firstItem="nFR-L5-rJp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qhs-Nh-EP6"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="PLg-fY-pB9" secondAttribute="top" constant="20" id="w12-Fe-HGA"/>
+                            <constraint firstItem="PLg-fY-pB9" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xeh-9m-RbH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
                     <connections>
                         <outlet property="bottomTextfield" destination="kOe-iU-U8X" id="r61-ep-8Hf"/>
                         <outlet property="cameraButton" destination="Cns-gV-GCb" id="JyI-6F-g0z"/>
+                        <outlet property="navBar" destination="PLg-fY-pB9" id="JQY-0f-nYq"/>
                         <outlet property="originalMemeImage" destination="saP-E2-uJV" id="ROQ-E1-P99"/>
+                        <outlet property="toolBar" destination="2Q5-Zh-Y19" id="Cv9-I5-gIF"/>
                         <outlet property="topTextfield" destination="nFR-L5-rJp" id="kKO-vp-7qL"/>
                     </connections>
                 </viewController>
