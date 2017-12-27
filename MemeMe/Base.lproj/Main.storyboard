@@ -23,9 +23,18 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="saP-E2-uJV">
-                                <rect key="frame" x="67" y="155" width="240" height="255"/>
-                            </imageView>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="nFR-L5-rJp">
+                                <rect key="frame" x="16" y="117" width="343" height="21"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
+                            <textField opaque="NO" contentMode="scaleToFill" ambiguous="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOe-iU-U8X">
+                                <rect key="frame" x="16" y="543" width="343" height="21"/>
+                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
+                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
+                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
+                            </textField>
                             <toolbar opaque="NO" clearsContextBeforeDrawing="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="2Q5-Zh-Y19">
                                 <rect key="frame" x="0.0" y="623" width="375" height="44"/>
                                 <items>
@@ -47,12 +56,6 @@
                                 </items>
                                 <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                             </toolbar>
-                            <textField opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="19" translatesAutoresizingMaskIntoConstraints="NO" id="nFR-L5-rJp">
-                                <rect key="frame" x="16" y="168" width="343" height="21"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
                             <navigationBar contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="PLg-fY-pB9">
                                 <rect key="frame" x="-1" y="0.0" width="376" height="44"/>
                                 <color key="barTintColor" white="0.33333333333333331" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -73,33 +76,28 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
-                            <textField opaque="NO" contentMode="scaleToFill" misplaced="YES" contentHorizontalAlignment="left" contentVerticalAlignment="center" textAlignment="natural" minimumFontSize="17" translatesAutoresizingMaskIntoConstraints="NO" id="kOe-iU-U8X">
-                                <rect key="frame" x="16" y="403" width="343" height="99"/>
-                                <color key="textColor" red="1" green="1" blue="1" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
-                                <fontDescription key="fontDescription" name="Impact" family="Impact" pointSize="17"/>
-                                <textInputTraits key="textInputTraits" autocapitalizationType="allCharacters"/>
-                            </textField>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="saP-E2-uJV">
+                                <rect key="frame" x="67" y="194" width="240" height="279"/>
+                            </imageView>
                         </subviews>
                         <color key="backgroundColor" red="0.0" green="0.0" blue="0.0" alpha="1" colorSpace="custom" customColorSpace="displayP3"/>
                         <constraints>
-                            <constraint firstItem="2Q5-Zh-Y19" firstAttribute="top" secondItem="saP-E2-uJV" secondAttribute="bottom" constant="213" id="0GC-h1-SJL"/>
                             <constraint firstItem="2Q5-Zh-Y19" firstAttribute="bottom" secondItem="6Tk-OE-BBY" secondAttribute="bottom" id="0Om-aP-C94"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="leading" secondItem="PLg-fY-pB9" secondAttribute="leading" constant="1" id="2um-p2-r02"/>
-                            <constraint firstItem="nFR-L5-rJp" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" constant="148" id="5lM-2t-d4Q"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="saP-E2-uJV" secondAttribute="trailing" constant="68" id="6Ap-sN-yWU"/>
-                            <constraint firstItem="saP-E2-uJV" firstAttribute="top" secondItem="PLg-fY-pB9" secondAttribute="bottom" constant="111" id="CM4-Ct-jLf"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="bottom" secondItem="kOe-iU-U8X" secondAttribute="bottom" constant="208" id="IL0-x8-gKI"/>
+                            <constraint firstItem="nFR-L5-rJp" firstAttribute="top" relation="greaterThanOrEqual" secondItem="PLg-fY-pB9" secondAttribute="bottom" constant="50" id="BTc-1c-OSV"/>
+                            <constraint firstItem="saP-E2-uJV" firstAttribute="top" secondItem="PLg-fY-pB9" secondAttribute="bottom" constant="150" id="CM4-Ct-jLf"/>
                             <constraint firstItem="PLg-fY-pB9" firstAttribute="leading" secondItem="8bC-Xf-vdC" secondAttribute="leading" constant="-1" id="JGG-JA-Kaf"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="nFR-L5-rJp" secondAttribute="trailing" constant="16" id="LCj-Mc-R6h"/>
                             <constraint firstItem="PLg-fY-pB9" firstAttribute="top" secondItem="8bC-Xf-vdC" secondAttribute="top" id="MWL-nz-B1F"/>
+                            <constraint firstItem="saP-E2-uJV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="Pay-Nv-Zrg"/>
+                            <constraint firstItem="2Q5-Zh-Y19" firstAttribute="top" relation="greaterThanOrEqual" secondItem="kOe-iU-U8X" secondAttribute="bottom" constant="50" id="UKa-CQ-X9w"/>
                             <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="kOe-iU-U8X" secondAttribute="trailing" constant="16" id="avL-Pz-OqP"/>
                             <constraint firstItem="2Q5-Zh-Y19" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="eCk-nn-Zou"/>
-                            <constraint firstItem="saP-E2-uJV" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="67" id="eIO-aR-P40"/>
-                            <constraint firstItem="2Q5-Zh-Y19" firstAttribute="top" secondItem="saP-E2-uJV" secondAttribute="bottom" constant="213" id="h3i-g4-0Dh"/>
+                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="trailing" secondItem="saP-E2-uJV" secondAttribute="trailing" constant="68" id="eXX-0j-YD8"/>
                             <constraint firstItem="kOe-iU-U8X" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="hoV-LM-tWT"/>
                             <constraint firstItem="2Q5-Zh-Y19" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="q07-a6-QcJ"/>
                             <constraint firstItem="nFR-L5-rJp" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" constant="16" id="qhs-Nh-EP6"/>
-                            <constraint firstItem="6Tk-OE-BBY" firstAttribute="top" secondItem="PLg-fY-pB9" secondAttribute="top" constant="20" id="w12-Fe-HGA"/>
+                            <constraint firstItem="2Q5-Zh-Y19" firstAttribute="top" secondItem="saP-E2-uJV" secondAttribute="bottom" constant="150" id="xQu-1B-cfN"/>
                             <constraint firstItem="PLg-fY-pB9" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xeh-9m-RbH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
