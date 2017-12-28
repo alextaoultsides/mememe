@@ -27,29 +27,32 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         var memedImage: UIImage?
         
     }
+    let memeTextAttributes:[String:Any] = [
+        NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
+        NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
+        NSAttributedStringKey.font.rawValue: UIFont(name: "Impact", size: 40)!,
+        NSAttributedStringKey.strokeWidth.rawValue: -4.0,]
+    
     
     // MARK: Load textfields and set defaults
     override func viewDidLoad() {
         super.viewDidLoad()
-    
-        self.topTextfield.delegate = memeTextDelegate
-        self.bottomTextfield.delegate = memeTextDelegate
         
-        
-        let memeTextAttributes:[String:Any] = [
-            NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
-            NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
-            NSAttributedStringKey.font.rawValue: UIFont(name: "Impact", size: 40)!,
-            NSAttributedStringKey.strokeWidth.rawValue: -4.0,]
-        
-        
-        topTextfield.defaultTextAttributes = memeTextAttributes
-        bottomTextfield.defaultTextAttributes = memeTextAttributes
-        
+        memeTextFieldSetup(memeTextField: topTextfield)
+        memeTextFieldSetup(memeTextField: bottomTextfield)
+        memeTextDefault()
+    }
+    func memeTextDefault(){
         topTextfield.text = "TOP"
         bottomTextfield.text = "BOTTOM"
-        topTextfield.textAlignment = NSTextAlignment.center
-        bottomTextfield.textAlignment = NSTextAlignment.center
+        return
+    }
+    
+    func memeTextFieldSetup(memeTextField: UITextField){
+        
+        memeTextField.delegate = memeTextDelegate
+        memeTextField.defaultTextAttributes = memeTextAttributes
+        memeTextField.textAlignment = NSTextAlignment.center
     }
     
     override func viewWillAppear(_ animated: Bool) {
@@ -60,18 +63,19 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
 
     // MARK: Toolbar buttons
     @IBAction func pickAnImageFromCamera(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        present(imagePicker, animated: true, completion: nil)
+        imagePickerDevice(device: .camera)
     }
     
     @IBAction func pickAnImageFromAlbum(_ sender: Any) {
-        let imagePicker = UIImagePickerController()
-        imagePicker.delegate = self
-        imagePicker.sourceType = .photoLibrary
-        present(imagePicker, animated: true, completion: nil)
+        imagePickerDevice(device: .photoLibrary)
     }
     
+    func imagePickerDevice(device: UIImagePickerControllerSourceType){
+        let imagePicker = UIImagePickerController()
+        imagePicker.delegate = self
+        imagePicker.sourceType = device
+        present(imagePicker, animated: true, completion: nil)
+    }
     
     func imagePickerController(_ picker: UIImagePickerController, didFinishPickingMediaWithInfo info: [String : Any]) {
         
@@ -95,8 +99,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     func generateMemedImage() -> UIImage {
         
         //Hides bars for screenshot
-        toolBar.isHidden = true
-        navBar.isHidden = true
+        setBars()
         // Render view to an image
         UIGraphicsBeginImageContext(self.view.frame.size)
         view.drawHierarchy(in: self.view.frame, afterScreenUpdates: true)
@@ -104,11 +107,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         UIGraphicsEndImageContext()
         
         //bars become visible after screenshot is taken
-        toolBar.isHidden = false
-        navBar.isHidden = false
+        setBars()
         
         
         return memedImage
+    }
+    
+    func setBars(){
+        toolBar.isHidden = !toolBar.isHidden
+        navBar.isHidden = !navBar.isHidden
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -135,8 +142,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     }
    
     @objc func keyboardWillShow(_ notification:Notification) {
-        
+        if (bottomTextfield.text == ""){
         view.frame.origin.y -= getKeyboardHeight(notification)
+        }
+        
     }
     
     func getKeyboardHeight(_ notification:Notification) -> CGFloat {
@@ -169,12 +178,11 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     
     // MARK: Cancel Button resets Meme
     @IBAction func cancelButton(_ sender: Any) {
-        self.topTextfield.text = "TOP"
-        self.bottomTextfield.text = "BOTTOM"
+        memeTextDefault()
         originalMemeImage.image = nil
     }
     
-    
+   
     
     
 }

@@ -15,6 +15,8 @@ class MemeTextfieldDelegate: NSObject, UITextFieldDelegate{
         var newText = textField.text! as NSString
         newText = newText.replacingCharacters(in: range, with: string) as NSString
         
+        
+        
         return true
     }
     func textFieldShouldBeginEditing(_ textField: UITextField) -> Bool {
@@ -26,5 +28,7 @@ class MemeTextfieldDelegate: NSObject, UITextFieldDelegate{
         textField.resignFirstResponder()
         return true
     }
+    
+    
     
 }
