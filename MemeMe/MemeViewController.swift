@@ -9,7 +9,7 @@
 import UIKit
 import Foundation
 
-class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
+class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     let memeTextDelegate = MemeTextfieldDelegate()
 
@@ -20,13 +20,8 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBOutlet weak var navBar: UINavigationBar!
     @IBOutlet weak var toolBar: UIToolbar!
     
-    struct Meme {
-        var topText : String?
-        var bottomText: String?
-        var originalImage: UIImage?
-        var memedImage: UIImage?
-        
-    }
+    
+    
     let memeTextAttributes:[String:Any] = [
         NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
         NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
@@ -90,10 +85,15 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         dismiss(animated: true, completion: nil)
     }
 
-    
+    // MARK: Save Completed Meme
     func save() {
         // Create the meme
-        _ = Meme(topText: topTextfield.text!, bottomText: bottomTextfield.text!, originalImage: originalMemeImage.image!, memedImage: generateMemedImage()  )
+        let meme = Meme.init(topText: topTextfield.text!, bottomText: bottomTextfield.text!, originalImage: originalMemeImage.image!, memedImage: generateMemedImage()  )
+        
+        let object = UIApplication.shared.delegate
+        let appDelegate = object as! AppDelegate
+        appDelegate.memes.append(meme)
+        
     }
     
     func generateMemedImage() -> UIImage {
@@ -164,12 +164,10 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
         
         controller.completionWithItemsHandler = {(activityType: UIActivityType?, completed: Bool, returnedItems: [Any]?, error: Error?) in
             if !completed {
-                print("cancelled ActivityView")
                 return
             }
             if self.originalMemeImage.image != nil{
                 self.save()
-                print("saved")
                 return
             }
         }
@@ -180,6 +178,7 @@ class ViewController: UIViewController, UIImagePickerControllerDelegate, UINavig
     @IBAction func cancelButton(_ sender: Any) {
         memeTextDefault()
         originalMemeImage.image = nil
+        self.dismiss(animated: true, completion: nil)
     }
     
    
