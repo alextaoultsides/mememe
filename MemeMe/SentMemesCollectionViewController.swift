@@ -28,7 +28,6 @@ class SentMemesCollectionViewController: UICollectionViewController {
         let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "SentMemeCell", for: indexPath) as! SentMemeCollectionViewCell
         let meme = self.memes[(indexPath as NSIndexPath).row]
         
-        
         cell.memedImageView?.image = meme.memedImage
         
         return cell
@@ -39,8 +38,6 @@ class SentMemesCollectionViewController: UICollectionViewController {
         let detailController = self.storyboard!.instantiateViewController(withIdentifier: "MemeDetailView") as! MemeDetailViewController
         let meme = self.memes[indexPath.row]
         detailController.meme = meme
-        
-        
-        
+        detailController.memeIndex = indexPath.row
         self.navigationController!.pushViewController(detailController, animated: true)    }
 }

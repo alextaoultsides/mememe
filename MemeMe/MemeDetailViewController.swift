@@ -11,7 +11,7 @@ import UIKit
 
 class MemeDetailViewController: UIViewController{
     var meme: Meme!
-    
+    var memeIndex: Int! //current meme row index
     
     @IBOutlet weak var memeDetailImageView: UIImageView!
     
@@ -35,11 +35,14 @@ class MemeDetailViewController: UIViewController{
         self.tabBarController?.tabBar.isHidden = false
     }
     
+    //send meme to meme editor
     @objc func EditMeme(){
         
         let editMemeController = self.storyboard!.instantiateViewController(withIdentifier: "editMemeVC") as! MemeViewController
         let memeNew = self.meme
-        editMemeController.editSentMeme(memeOld: memeNew!)
-        present(editMemeController, animated: true, completion: nil)
+        editMemeController.editSentMeme(memeOld: memeNew!, memeIndex: memeIndex)
+        self.present(editMemeController, animated: true, completion: nil)
     }
+    
+    
 }

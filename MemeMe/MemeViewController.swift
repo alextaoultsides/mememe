@@ -12,8 +12,8 @@ import Foundation
 class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     let memeTextDelegate = MemeTextfieldDelegate()
-    var meme: Meme!
-    
+    var sentMeme: Meme!
+    var sentMemeIndex: Int!
     
     @IBOutlet weak var originalMemeImage: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
@@ -38,24 +38,27 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         memeTextFieldSetup(memeTextField: topTextfield)
         memeTextFieldSetup(memeTextField: bottomTextfield)
         memeTextDefault()
+        editedMeme()
+        
     }
     func memeTextDefault(){
         topTextfield.text = "TOP"
         bottomTextfield.text = "BOTTOM"
         
     }
-    
+    //MARK: Edit meme setup
     func editedMeme(){
-        if meme?.originalImage != nil{
-            originalMemeImage.image = meme.originalImage
-            topTextfield.text = meme.topText
-            bottomTextfield.text = meme.bottomText
+        if self.sentMeme?.originalImage != nil{
+            originalMemeImage.image = self.sentMeme.originalImage
+            topTextfield.text = self.sentMeme.topText
+            bottomTextfield.text = self.sentMeme.bottomText
         }
         
     }
     
-    func editSentMeme(memeOld: Meme){
-        meme = memeOld
+    func editSentMeme(memeOld: Meme, memeIndex: Int){
+        self.sentMeme = memeOld
+        self.sentMemeIndex = memeIndex
     }
     
     func memeTextFieldSetup(memeTextField: UITextField){
@@ -67,7 +70,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        editedMeme()
         subscribeToKeyboardNotifications()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)//Checks if camera is available and enables camera button
     }
@@ -105,10 +107,16 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func save() {
         // Create the meme
         let meme = Meme.init(topText: topTextfield.text!, bottomText: bottomTextfield.text!, originalImage: originalMemeImage.image!, memedImage: generateMemedImage()  )
-        
         let object = UIApplication.shared.delegate
         let appDelegate = object as! AppDelegate
-        appDelegate.memes.append(meme)
+        
+        if sentMeme == nil{
+            
+            appDelegate.memes.append(meme)
+        }
+        else{
+            appDelegate.memes[sentMemeIndex] = meme
+        }
         
     }
     
@@ -190,11 +198,17 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     }
     
     
-    // MARK: Cancel Button resets Meme
+    // MARK: Cancel Button resets Meme if not already in memes array
     @IBAction func cancelButton(_ sender: Any) {
+        print("cancelButton pressed")
+        if self.sentMeme == nil{
         memeTextDefault()
         originalMemeImage.image = nil
         self.dismiss(animated: true, completion: nil)
+        }
+        else{
+            self.dismiss(animated: true, completion: nil)
+        }
     }
     
    
