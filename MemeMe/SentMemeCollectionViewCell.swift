@@ -14,4 +14,5 @@ class SentMemeCollectionViewCell: UICollectionViewCell{
     @IBOutlet weak var memedImageView: UIImageView!
     
     
+    
 }

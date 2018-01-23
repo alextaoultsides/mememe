@@ -10,21 +10,36 @@ import Foundation
 import UIKit
 
 class MemeDetailViewController: UIViewController{
+    var meme: Meme!
     
-    var memes: [Meme]!
-    let appDelegate = UIApplication.shared.delegate as! AppDelegate
     
     @IBOutlet weak var memeDetailImageView: UIImageView!
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
-        
+        memeDetailImageView.image = meme.memedImage
         self.tabBarController?.tabBar.isHidden = true
-        //self.imageView!.image =
+        
+        navigationItem.rightBarButtonItem = UIBarButtonItem(
+            title: "Edit",
+            style: .plain,
+            target: self,
+            action: #selector(EditMeme)
+        )
+        
+        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
         super.viewWillDisappear(animated)
         self.tabBarController?.tabBar.isHidden = false
+    }
+    
+    @objc func EditMeme(){
+        
+        let editMemeController = self.storyboard!.instantiateViewController(withIdentifier: "editMemeVC") as! MemeViewController
+        let memeNew = self.meme
+        editMemeController.editSentMeme(memeOld: memeNew!)
+        present(editMemeController, animated: true, completion: nil)
     }
 }

@@ -90,12 +90,17 @@
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
                         <subviews>
-                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" fixedFrame="YES" translatesAutoresizingMaskIntoConstraints="NO" id="mF9-BQ-c4x">
-                                <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
-                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                            <imageView userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" translatesAutoresizingMaskIntoConstraints="NO" id="mF9-BQ-c4x">
+                                <rect key="frame" x="0.0" y="20" width="375" height="647"/>
                             </imageView>
                         </subviews>
                         <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
+                        <constraints>
+                            <constraint firstItem="mF9-BQ-c4x" firstAttribute="leading" secondItem="1X8-Vj-xpF" secondAttribute="leading" id="FWR-Uu-z0P"/>
+                            <constraint firstItem="mF9-BQ-c4x" firstAttribute="centerY" secondItem="1X8-Vj-xpF" secondAttribute="centerY" id="Ixu-rJ-leb"/>
+                            <constraint firstItem="mF9-BQ-c4x" firstAttribute="top" secondItem="1X8-Vj-xpF" secondAttribute="top" id="LVb-h2-21p"/>
+                            <constraint firstItem="mF9-BQ-c4x" firstAttribute="centerX" secondItem="1X8-Vj-xpF" secondAttribute="centerX" id="fTS-KL-DaT"/>
+                        </constraints>
                         <viewLayoutGuide key="safeArea" id="1X8-Vj-xpF"/>
                     </view>
                     <connections>
@@ -191,7 +196,7 @@
         <!--Meme View Controller-->
         <scene sceneID="tne-QT-ifu">
             <objects>
-                <viewController id="BYZ-38-t0r" customClass="MemeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
+                <viewController storyboardIdentifier="editMemeVC" useStoryboardIdentifierAsRestorationIdentifier="YES" id="BYZ-38-t0r" customClass="MemeViewController" customModule="MemeMe" customModuleProvider="target" sceneMemberID="viewController">
                     <view key="view" contentMode="scaleToFill" id="8bC-Xf-vdC">
                         <rect key="frame" x="0.0" y="0.0" width="375" height="667"/>
                         <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
@@ -253,6 +258,10 @@
                                     </navigationItem>
                                 </items>
                             </navigationBar>
+                            <pickerView contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="AkO-H5-RDQ">
+                                <rect key="frame" x="0.0" y="276" width="375" height="162"/>
+                                <autoresizingMask key="autoresizingMask" widthSizable="YES" flexibleMaxY="YES"/>
+                            </pickerView>
                         </subviews>
                         <color key="backgroundColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                         <color key="tintColor" white="0.0" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
@@ -276,6 +285,11 @@
                             <constraint firstItem="PLg-fY-pB9" firstAttribute="trailing" secondItem="6Tk-OE-BBY" secondAttribute="trailing" id="xeh-9m-RbH"/>
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
+                        <variation key="default">
+                            <mask key="subviews">
+                                <exclude reference="AkO-H5-RDQ"/>
+                            </mask>
+                        </variation>
                     </view>
                     <connections>
                         <outlet property="bottomTextfield" destination="kOe-iU-U8X" id="r61-ep-8Hf"/>

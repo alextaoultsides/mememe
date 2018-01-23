@@ -12,7 +12,9 @@ import Foundation
 class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UINavigationControllerDelegate, UITextFieldDelegate {
     
     let memeTextDelegate = MemeTextfieldDelegate()
-
+    var meme: Meme!
+    
+    
     @IBOutlet weak var originalMemeImage: UIImageView!
     @IBOutlet weak var cameraButton: UIBarButtonItem!
     @IBOutlet weak var topTextfield: UITextField!
@@ -40,7 +42,20 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     func memeTextDefault(){
         topTextfield.text = "TOP"
         bottomTextfield.text = "BOTTOM"
-        return
+        
+    }
+    
+    func editedMeme(){
+        if meme?.originalImage != nil{
+            originalMemeImage.image = meme.originalImage
+            topTextfield.text = meme.topText
+            bottomTextfield.text = meme.bottomText
+        }
+        
+    }
+    
+    func editSentMeme(memeOld: Meme){
+        meme = memeOld
     }
     
     func memeTextFieldSetup(memeTextField: UITextField){
@@ -52,6 +67,7 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     
     override func viewWillAppear(_ animated: Bool) {
         super.viewWillAppear(animated)
+        editedMeme()
         subscribeToKeyboardNotifications()
         cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)//Checks if camera is available and enables camera button
     }
