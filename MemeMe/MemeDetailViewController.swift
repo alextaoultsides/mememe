@@ -26,8 +26,6 @@ class MemeDetailViewController: UIViewController{
             target: self,
             action: #selector(EditMeme)
         )
-        
-        
     }
     
     override func viewWillDisappear(_ animated: Bool) {
@@ -41,8 +39,11 @@ class MemeDetailViewController: UIViewController{
         let editMemeController = self.storyboard!.instantiateViewController(withIdentifier: "editMemeVC") as! MemeViewController
         let memeNew = self.meme
         editMemeController.editSentMeme(memeOld: memeNew!, memeIndex: memeIndex)
-        self.present(editMemeController, animated: true, completion: nil)
+        self.present(editMemeController, animated: true, completion: {self.navigationController?.popViewController(animated: true)})
+        if editMemeController.isBeingDismissed{
+            self.navigationController!.popViewController(animated: true)
+            print("not ok")
+            
+        }
     }
-    
-    
 }

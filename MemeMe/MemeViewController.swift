@@ -23,13 +23,11 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
     @IBOutlet weak var toolBar: UIToolbar!
     
     
-    
     let memeTextAttributes:[String:Any] = [
         NSAttributedStringKey.strokeColor.rawValue: UIColor.black,
         NSAttributedStringKey.foregroundColor.rawValue: UIColor.white,
         NSAttributedStringKey.font.rawValue: UIFont(name: "Impact", size: 40)!,
         NSAttributedStringKey.strokeWidth.rawValue: -4.0,]
-    
     
     // MARK: Load textfields and set defaults
     override func viewDidLoad() {
@@ -41,6 +39,20 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         editedMeme()
         
     }
+    
+    override func viewWillAppear(_ animated: Bool) {
+        super.viewWillAppear(animated)
+        subscribeToKeyboardNotifications()
+        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)//Checks if camera is available and enables camera button
+    }
+    
+    override func viewWillDisappear(_ animated: Bool) {
+        
+        super.viewWillDisappear(animated)
+        unsubscribeFromKeyboardNotifications()
+    }
+    
+    
     func memeTextDefault(){
         topTextfield.text = "TOP"
         bottomTextfield.text = "BOTTOM"
@@ -53,7 +65,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
             topTextfield.text = self.sentMeme.topText
             bottomTextfield.text = self.sentMeme.bottomText
         }
-        
     }
     
     func editSentMeme(memeOld: Meme, memeIndex: Int){
@@ -66,12 +77,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         memeTextField.delegate = memeTextDelegate
         memeTextField.defaultTextAttributes = memeTextAttributes
         memeTextField.textAlignment = NSTextAlignment.center
-    }
-    
-    override func viewWillAppear(_ animated: Bool) {
-        super.viewWillAppear(animated)
-        subscribeToKeyboardNotifications()
-        cameraButton.isEnabled = UIImagePickerController.isSourceTypeAvailable(.camera)//Checks if camera is available and enables camera button
     }
 
     // MARK: Toolbar buttons
@@ -111,7 +116,6 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         let appDelegate = object as! AppDelegate
         
         if sentMeme == nil{
-            
             appDelegate.memes.append(meme)
         }
         else{
@@ -132,20 +136,13 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         
         //bars become visible after screenshot is taken
         setBars()
-        
-        
+    
         return memedImage
     }
     
     func setBars(){
         toolBar.isHidden = !toolBar.isHidden
         navBar.isHidden = !navBar.isHidden
-    }
-    
-    override func viewWillDisappear(_ animated: Bool) {
-        
-        super.viewWillDisappear(animated)
-        unsubscribeFromKeyboardNotifications()
     }
     
     // MARK:  Notifications
@@ -197,22 +194,20 @@ class MemeViewController: UIViewController, UIImagePickerControllerDelegate, UIN
         }
     }
     
-    
     // MARK: Cancel Button resets Meme if not already in memes array
     @IBAction func cancelButton(_ sender: Any) {
-        print("cancelButton pressed")
+        
         if self.sentMeme == nil{
         memeTextDefault()
         originalMemeImage.image = nil
         self.dismiss(animated: true, completion: nil)
         }
         else{
+            
             self.dismiss(animated: true, completion: nil)
+            
         }
     }
-    
-   
-    
     
 }
 
